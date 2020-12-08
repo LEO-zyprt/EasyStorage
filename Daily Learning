@@ -87,6 +87,55 @@ def quadratic(a, b, c):
         x_2 = (-b - math.sqrt(b**2-4*a*c))/(2*a)
         return x_1, x_2
 
+# 定义函数，默认参数
+def power(x, n = 2):   #如果不输入n=2的话，就默认是2
+  y = x ** n
+  return y 
+#有一点需要注意，默认参数必须指向不变对象
+def add_end(L= none):
+  if L = none:
+    L = []
+  L.append('end')
+  return L
+  
+# 可变参数 定义可变参数的好处是不需要输入list或者tuple
+def calc(*numbers):
+  sum = 0
+  for i in numbers:
+     sum = sum + n**2
+  return sum #但是存在的问题是，如果numbers是个list或者是tuple, 那么在calc()中输入的参数为calc(*numbers)去解决这个问题
 
+# 关键字参数  kw输出的时候是一个字典
+def person(name, age, **kw):
+   print('name:', name, 'age:', age, 'other:', kw)
+person('tom', 35', city='manchester')
+>> name:tom age:35 other:{'city':'manchester'}
+
+def person(name, age, *, city, job) #*号后面的都是关键参数，因此在用该函数的时候需要输入关键参数名称
+def person(name, age, *args, city, job) #这种情况下，*args是一个可变参数，可变参数后面的参数全部为关键参数，输入时需要输入关键参数名称
+
+# 参数定义的顺序必须是：必选参数、默认参数、可变参数、命名关键字参数和关键字参数
+# 我的理解是命名关键字参数，这个关键字参数是可选的，可有可无
+# 可变参数得到一个tuple
+# 关键字参数有个奇特的地方是，会返回出一个dict
+def f2(a, b, c=0, *, d, **kw): 这个里面的d及时命名关键字参数，**kw就是关键字参数
+
+# Exercise
+def product(*arg):
+    if len(arg) == 0:
+       raise TypeError('No Input')
+    
+    for i in arg:
+        if not isinstance(i, (float, int)):
+           raise TypeError('bad operand type')
+        else:
+           y = 1
+           for i in arg:
+               y = y*i
+    return y
+
+
+
+    
 
 
