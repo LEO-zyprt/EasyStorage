@@ -134,6 +134,23 @@ def product(*arg):
                y = y*i
     return y
 
+# 递归函数
+def factor(n):
+  if n == 1:
+    return 1
+   return n*factor(n-1) #但是这种方法会导致函数的多次调用，导致栈溢出
+# 尾递归优化
+def fact(n):
+  return fact_iter(n,1)
+def fact_iter(number, product):
+  if number == 1:
+    retrun product
+  return fact_iter(number-1, number*product) #在函数调用前就就返回了product和number，不会影响函数调用
+  
+ #汉诺塔游戏
+ 
+  
+   
 
 
     
