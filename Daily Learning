@@ -147,9 +147,62 @@ def fact_iter(number, product):
     retrun product
   return fact_iter(number-1, number*product) #在函数调用前就就返回了product和number，不会影响函数调用
   
- #汉诺塔游戏
- 
-  
+#汉诺塔游戏
+#可以将A盘的金片看最底下一个，和上面的n-1个
+#最下面的一个从A到C盘；上面的n-1个借助B做缓冲到C盘
+def move(n, a, b, c):
+    if n == 1:
+        print('move', a, '>>', c)
+    else:
+        move(n-1, a, c, b)
+        move(1, a, b, c)
+        move(n-1, b, a, c)
+move(3, 'A', 'B', 'C')
+
+#迭代
+for k in dic:
+    print(k)  #这样就会type出key值
+for k in dic.values() #这样会type出value值
+for k,v in dic.items() #这样会type出key和value值
+
+for key, value in enumerate(['A', 'B', 'C']):  # enumerate是将list有对应的索引，key就是索引
+    print(key, value)
+    
+for x,y in [(1,2),(3,4),(4,5)]:
+    print(x,y)
+    
+# 生成器
+g = (x*x for x in range(10)) #这样g就是一个生成器，这样可以下次可以直接调用，for n in g
+
+# 斐波拉契数列
+def lib(max):
+    n,a,b = 0,0,1
+    while n < max:
+        print(b)  #如果希望将该函数变为一个生成器，那么就不要print出来，直接改为yield b yield加不加括号都可
+        a, b = b, a+b
+        n += 1
+    return 'done'
+# generator当中遇到yield就中断，下次又继续执行
+
+#如果想拿到lib的返回值：
+#def lib(max):
+#    n,a,b = 0,0,1
+#    while n < max:
+#       yield(b)  
+#        a, b = b, a+b
+#       n += 1
+#    return 'done'
+
+g = lib(6)
+while True:
+    try:
+        x = next(g)
+        print('g:', x)
+    except StopIteration as e:
+        print('Retrun Value:', e.value)
+        break
+        
+        
    
 
 
