@@ -34,7 +34,7 @@ list.append('adam') 插在末尾
 list.insert(1, 'adam') 插在位置是index = 1 的地方
 list.pop() 删除最后一位
 list.pop(1) 删除指定索引的元素
-listp[1] = 'adam' 替换
+list[1] = 'adam' 替换
 
 # tuple
 a = () 是一个空tuple
@@ -118,7 +118,7 @@ def person(name, age, *args, city, job) #这种情况下，*args是一个可变�
 # 我的理解是命名关键字参数，这个关键字参数是可选的，可有可无
 # 可变参数得到一个tuple
 # 关键字参数有个奇特的地方是，会返回出一个dict
-def f2(a, b, c=0, *, d, **kw): 这个里面的d及时命名关键字参数，**kw就是关键字参数
+def f2(a, b, c=0, *, d, **kw): 这个里面的d就是命名关键字参数，**kw就是关键字参数
 
 # Exercise
 def product(*arg):
@@ -201,6 +201,35 @@ while True:
     except StopIteration as e:
         print('Retrun Value:', e.value)
         break
+        
+#map的使用和reduce的使用，map是依次，reduce是在之前的基础上继续。      
+list(map(str, [1, 2, 3, 4, 5, 6, 7, 8, 9]))
+['1', '2', '3', '4', '5', '6', '7', '8', '9']
+
+#将'13579'转化为int类型3579
+from functools import reduce
+def fn(x,y):
+    return 10*x + y
+def ff(s):
+    digits = {'0':0,'1':1,'2':2,'3':3,'4':4,'5':5,'6':6,'7':7,'8':8,'9':9}
+    return digits[s]
+result = reduce(fn, map(ff, '13579'))
+print(type(result))
+>>int
+以上的'13579'是按照次序一个个进入map中的ff函数的，依次进去输出形成fn所需要的元素
+
+#上面的问题用lambda也同样可以解决
+from functools import reduce
+digits = {'0':0,'1':1,'2':2,'3':3,'4':4,'5':5,'6':6,'7':7,'8':8,'9':9}
+def char2num(s):
+    return digits[s]
+def str2int(s):
+    return reduce(lambda x, y: x*10+y, map(char2num, s))
+result = str2int('12345')
+print(type(result))
+>>int
+练习还没做
+
         
   
         
