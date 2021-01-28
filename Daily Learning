@@ -230,6 +230,20 @@ print(type(result))
 >>int
 练习还没做
 
+from collection import defaultdict
+dd = defaultdict(int)
+dd('tom') #返回字典，value为0
+
+import os
+os.chdir('..')#返回上一级
+os.chdir('具体的文件夹名称'）
+
+import pickle
+with open('data.pickle','wb') as f:
+  pickle.dump(x, f)
+with open('data.pickle', 'rb') as f:
+  x = pickle.load(f)
+
         
   
         
